@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>One America Strategies — Sondagem de Interesse</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#e9e6df;
+    --surface:#f6f4ed;
+    --surface-2:#efece2;
+    --ink:#1f2430;
+    --ink-soft:#3c4250;
+    --muted:#766f60;
+    --accent:#93764a;
+    --accent-deep:#6f5635;
+    --line:#d9d3c2;
+    --radius:14px;
+    --serif:"Source Serif 4", Georgia, serif;
+    --sans:"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --shadow: 0 1px 2px rgba(30,25,15,0.04), 0 8px 24px -12px rgba(30,25,15,0.10);
+  }
+
+  *{box-sizing:border-box;}
+
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.5;
+  }
+
+  a{color:var(--accent-deep);}
+
+  .wrap{
+    max-width:760px;
+    margin:0 auto;
+    padding:64px 24px 90px;
+  }
+
+  /* header */
+  header{text-align:center; margin-bottom:36px;}
+  .logo{
+    width:62px; height:62px;
+    border-radius:50%;
+    background:var(--ink);
+    display:flex; align-items:center; justify-content:center;
+    margin:0 auto 18px;
+  }
+  .logo svg{width:28px; height:28px;}
+
+  .brand{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:1.5rem;
+    letter-spacing:.01em;
+    margin:0 0 10px;
+  }
+
+  .meta-row{
+    display:flex; align-items:center; justify-content:center;
+    gap:10px; flex-wrap:wrap;
+    font-size:.78rem;
+    color:var(--muted);
+    margin-bottom:28px;
+  }
+  .meta-row a{color:var(--muted); text-decoration:none;}
+  .pill-badge{
+    border:1px solid var(--line);
+    border-radius:999px;
+    padding:5px 14px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    font-size:.68rem;
+    font-weight:600;
+    color:var(--ink-soft);
+    background:var(--surface);
+  }
+
+  h1{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:clamp(2rem, 4.4vw, 2.7rem);
+    line-height:1.15;
+    margin:0 0 16px;
+    letter-spacing:-0.01em;
+  }
+  h1 em{
+    font-style:italic;
+    font-weight:500;
+    color:var(--accent-deep);
+  }
+
+  .subhead{
+    max-width:480px;
+    margin:0 auto 26px;
+    color:var(--ink-soft);
+    font-size:.98rem;
+  }
+
+  .rule{
+    width:50px; height:2px;
+    background:var(--ink);
+    opacity:.18;
+    margin:0 auto;
+  }
+
+  /* sections */
+  .section{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    padding:30px 28px;
+    margin-bottom:22px;
+  }
+
+  .section-head{
+    display:flex; align-items:center; gap:12px;
+    margin-bottom:24px;
+  }
+  .section-head .label{
+    text-transform:uppercase;
+    font-size:.74rem;
+    font-weight:700;
+    letter-spacing:.1em;
+    color:var(--muted);
+    white-space:nowrap;
+  }
+  .section-head::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:var(--line);
+  }
+
+  .field{margin-bottom:20px;}
+  .field:last-child{margin-bottom:0;}
+  .field-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+  }
+  @media (max-width:560px){
+    .field-row{grid-template-columns:1fr;}
+  }
+
+  label.field-label{
+    display:block;
+    font-size:.72rem;
+    font-weight:700;
+    letter-spacing:.07em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin-bottom:9px;
+  }
+  label.field-label .req{color:var(--accent-deep);}
+  .hint{
+    font-size:.78rem;
+    color:var(--muted);
+    margin-top:7px;
+  }
+
+  input[type=text], input[type=tel], input[type=email], textarea, select{
+    width:100%;
+    font-family:var(--sans);
+    font-size:.95rem;
+    color:var(--ink);
+    background:var(--surface-2);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:13px 15px;
+    transition:border-color .15s ease, background .15s ease;
+  }
+  input::placeholder, textarea::placeholder{color:#9b9282;}
+  input:focus, textarea:focus, select:focus{
+    outline:none;
+    border-color:var(--accent);
+    background:var(--surface);
+  }
+  textarea{resize:vertical; min-height:90px; font-family:var(--sans);}
+
+  select{
+    appearance:none;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23766f60' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+    background-repeat:no-repeat;
+    background-position:right 14px center;
+    background-size:16px;
+    padding-right:40px;
+    cursor:pointer;
+  }
+
+  /* option pills (radio + checkbox) */
+  .pill-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+  }
+  @media (max-width:560px){
+    .pill-grid{grid-template-columns:1fr;}
+  }
+  .pill{
+    position:relative;
+    display:flex;
+    align-items:center;
+    gap:11px;
+    border:1px solid var(--line);
+    background:var(--surface-2);
+    border-radius:10px;
+    padding:13px 16px;
+    cursor:pointer;
+    font-size:.92rem;
+    color:var(--ink-soft);
+    transition:border-color .15s ease, background .15s ease, color .15s ease;
+  }
+  .pill input{
+    position:absolute;
+    opacity:0;
+    width:1px; height:1px;
+  }
+  .indicator{
+    flex:none;
+    width:17px; height:17px;
+    border:1.5px solid #c8c0ac;
+    background:var(--surface);
+    display:flex; align-items:center; justify-content:center;
+    transition:border-color .15s ease, background .15s ease;
+  }
+  .pill input[type=radio] ~ .indicator{ border-radius:50%; }
+  .pill input[type=checkbox] ~ .indicator{ border-radius:4px; }
+  .indicator::after{
+    content:"";
+    width:8px; height:8px;
+    border-radius:50%;
+    background:var(--accent-deep);
+    opacity:0;
+    transform:scale(.4);
+    transition:opacity .12s ease, transform .12s ease;
+  }
+  .pill input[type=checkbox] ~ .indicator::after{
+    width:9px; height:7px;
+    border-radius:1px;
+    background:none;
+    border:2px solid var(--accent-deep);
+    border-top:none; border-right:none;
+    transform:scale(.8) rotate(-45deg) translate(0,-2px);
+  }
+  .pill .ico{font-size:1.05rem; line-height:1;}
+  .pill:hover{border-color:#c9bd9f;}
+  .pill:has(input:checked){
+    background:#efe7d8;
+    border-color:var(--accent);
+    color:var(--ink);
+    font-weight:600;
+  }
+  .pill:has(input:checked) .indicator{border-color:var(--accent-deep);}
+  .pill:has(input:checked) .indicator::after{opacity:1; transform:scale(1) rotate(-45deg) translate(0,-2px);}
+  .pill:has(input[type=radio]:checked) .indicator::after{transform:scale(1);}
+  .pill:has(input:focus-visible){
+    outline:2px solid var(--accent);
+    outline-offset:2px;
+  }
+
+  /* submit */
+  button.submit{
+    width:100%;
+    background:var(--ink);
+    color:#f5f2e9;
+    border:none;
+    border-radius:12px;
+    padding:18px;
+    font-family:var(--sans);
+    font-size:1rem;
+    font-weight:600;
+    letter-spacing:.01em;
+    cursor:pointer;
+    display:flex; align-items:center; justify-content:center; gap:8px;
+    transition:background .15s ease;
+  }
+  button.submit:hover{background:#11151f;}
+
+  .confidential{
+    text-align:center;
+    font-size:.78rem;
+    color:var(--muted);
+    margin-top:16px;
+  }
+
+  /* success state */
+  .success{
+    text-align:center;
+    padding:60px 30px;
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    display:none;
+  }
+  .success.show{display:block;}
+  .success h2{font-family:var(--serif); font-weight:600; margin:0 0 10px;}
+  .success p{color:var(--ink-soft); max-width:420px; margin:0 auto;}
+  form.hide{display:none;}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header>
+    <div class="logo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#f5f2e9" stroke-width="1.6">
+        <circle cx="12" cy="12" r="9.5"/>
+        <path d="M12 2.5c2.6 2.6 4 5.9 4 9.5s-1.4 6.9-4 9.5c-2.6-2.6-4-5.9-4-9.5s1.4-6.9 4-9.5z"/>
+        <path d="M2.7 9h18.6M2.7 15h18.6"/>
+      </svg>
+    </div>
+    <p class="brand">One America Strategies</p>
+    <div class="meta-row">
+      <a href="https://www.oneamericastrategies.com" target="_blank" rel="noopener">www.oneamericastrategies.com</a>
+      <span class="pill-badge">Sondagem de Interesse</span>
+    </div>
+    <h1>Expansão para os <em>Estados Unidos</em></h1>
+    <p class="subhead">Preencha o formulário abaixo para que possamos entender seu momento e apresentar as melhores soluções para sua jornada de imigração e negócios.</p>
+    <div class="rule"></div>
+  </header>
+
+  <form id="sondagem-form" novalidate>
+
+    <!-- 01 — DADOS DE CONTATO -->
+    <section class="section">
+      <div class="section-head"><span class="label">01 — Dados de Contato</span></div>
+
+      <div class="field field-row">
+        <div>
+          <label class="field-label" for="nome">Nome completo <span class="req">*</span></label>
+          <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+        </div>
+        <div>
+          <label class="field-label" for="whatsapp">WhatsApp / Telefone <span class="req">*</span></label>
+          <input type="tel" id="whatsapp" name="whatsapp" placeholder="+55 (00) 00000-0000" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="email">E-mail <span class="req">*</span></label>
+        <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="cidade">Cidade / Estado atual</label>
+        <input type="text" id="cidade" name="cidade" placeholder="Ex: São Paulo – SP">
+      </div>
+    </section>
+
+    <!-- 02 — SOBRE O NEGÓCIO -->
+    <section class="section">
+      <div class="section-head"><span class="label">02 — Sobre o Negócio</span></div>
+
+      <div class="field">
+        <label class="field-label">Qual é o seu segmento de atuação? <span class="req">*</span></label>
+        <div class="pill-grid">
+          <label class="pill"><input type="radio" name="segmento" value="gastronomia" required><span class="indicator"></span><span class="ico">🍰</span>Gastronomia / Doces</label>
+          <label class="pill"><input type="radio" name="segmento" value="tecnologia" required><span class="indicator"></span><span class="ico">💻</span>Tecnologia</label>
+          <label class="pill"><input type="radio" name="segmento" value="industria" required><span class="indicator"></span><span class="ico">🏭</span>Indústria / Manufatura</label>
+          <label class="pill"><input type="radio" name="segmento" value="servicos" required><span class="indicator"></span><span class="ico">🤝</span>Serviços / Consultoria</label>
+          <label class="pill"><input type="radio" name="segmento" value="saude" required><span class="indicator"></span><span class="ico">🏥</span>Saúde / Veterinária</label>
+          <label class="pill"><input type="radio" name="segmento" value="outro" required><span class="indicator"></span><span class="ico">📦</span>Outro segmento</label>
+        </div>
+      </div>
+
+      <div class="field field-row">
+        <div>
+          <label class="field-label" for="estagio">Como descreveria o estágio atual do seu projeto nos EUA?</label>
+          <select id="estagio" name="estagio">
+            <option value="" selected disabled>Selecione uma opção...</option>
+            <option value="planejamento">Ainda no planejamento</option>
+            <option value="pesquisando">Pesquisando opções</option>
+            <option value="abertura">Em processo de abertura</option>
+            <option value="aberta">Empresa já aberta, buscando crescer</option>
+            <option value="outro">Outro</option>
+          </select>
+        </div>
+        <div>
+          <label class="field-label" for="estado-eua">Qual estado americano tem interesse? <span class="req">*</span></label>
+          <select id="estado-eua" name="estado_eua" required>
+            <option value="" selected disabled>Selecione...</option>
+            <option>Florida</option><option>Texas</option><option>Califórnia</option>
+            <option>Nova York</option><option>Massachusetts</option><option>Nova Jersey</option>
+            <option>Geórgia</option><option>Carolina do Norte</option><option>Illinois</option>
+            <option>Connecticut</option><option>Ainda não decidi</option><option>Outro</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 — SITUAÇÃO DE VISTO -->
+    <section class="section">
+      <div class="section-head"><span class="label">03 — Situação de Visto</span></div>
+
+      <div class="field">
+        <label class="field-label">Você já possui algum visto americano?</label>
+        <div class="pill-grid">
+          <label class="pill"><input type="radio" name="visto" value="nenhum"><span class="indicator"></span>Não tenho nenhum</label>
+          <label class="pill"><input type="radio" name="visto" value="turista"><span class="indicator"></span>Turista (B1/B2)</label>
+          <label class="pill"><input type="radio" name="visto" value="e2"><span class="indicator"></span>Investidor E-2</label>
+          <label class="pill"><input type="radio" name="visto" value="outro"><span class="indicator"></span>Outro tipo de visto</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field-label">Você já possui advogado de imigração? <span class="req">*</span></label>
+        <div class="pill-grid">
+          <label class="pill"><input type="radio" name="advogado" value="sim" required><span class="indicator"></span><span class="ico">✅</span>Sim, já contratei</label>
+          <label class="pill"><input type="radio" name="advogado" value="conversa" required><span class="indicator"></span><span class="ico">🔄</span>Estou em conversa</label>
+          <label class="pill"><input type="radio" name="advogado" value="indicacao" required><span class="indicator"></span><span class="ico">❌</span>Não, aceito indicação</label>
+          <label class="pill"><input type="radio" name="advogado" value="sem_pressa" required><span class="indicator"></span><span class="ico">⏳</span>Não, ainda sem pressa</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field-label">Já tem contador / CPA nos EUA?</label>
+        <div class="pill-grid">
+          <label class="pill"><input type="radio" name="cpa" value="sim"><span class="indicator"></span><span class="ico">✅</span>Sim</label>
+          <label class="pill"><input type="radio" name="cpa" value="nao"><span class="indicator"></span><span class="ico">❌</span>Não</label>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 — ESTUDO DE VIABILIDADE -->
+    <section class="section">
+      <div class="section-head"><span class="label">04 — Estudo de Viabilidade</span></div>
+
+      <div class="field">
+        <label class="field-label">Você já realizou algum estudo de viabilidade para o seu negócio nos EUA?</label>
+        <div class="pill-grid">
+          <label class="pill"><input type="radio" name="viabilidade" value="sim"><span class="indicator"></span><span class="ico">✅</span>Sim, completo</label>
+          <label class="pill"><input type="radio" name="viabilidade" value="parcial"><span class="indicator"></span><span class="ico">🔄</span>Parcialmente</label>
+          <label class="pill"><input type="radio" name="viabilidade" value="nao"><span class="indicator"></span><span class="ico">❌</span>Não, preciso de ajuda</label>
+          <label class="pill"><input type="radio" name="viabilidade" value="desconhece"><span class="indicator"></span><span class="ico">🤔</span>Não sei o que é isso</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="viabilidade-comentarios">Comentários sobre o estudo de viabilidade</label>
+        <textarea id="viabilidade-comentarios" name="viabilidade_comentarios" placeholder="Descreva o que já foi feito ou o que gostaria de entender melhor..."></textarea>
+      </div>
+    </section>
+
+    <!-- 05 — BUSINESS PLAN & INTERESSE -->
+    <section class="section">
+      <div class="section-head"><span class="label">05 — Business Plan &amp; Interesse</span></div>
+
+      <div class="field">
+        <label class="field-label">Você já tem um business plan estruturado?</label>
+        <div class="pill-grid">
+          <label class="pill"><input type="radio" name="business_plan" value="sim"><span class="indicator"></span><span class="ico">✅</span>Sim, completo</label>
+          <label class="pill"><input type="radio" name="business_plan" value="rascunho"><span class="indicator"></span><span class="ico">📝</span>Em rascunho</label>
+          <label class="pill"><input type="radio" name="business_plan" value="nao"><span class="indicator"></span><span class="ico">❌</span>Não, preciso de ajuda</label>
+          <label class="pill"><input type="radio" name="business_plan" value="incerto"><span class="indicator"></span><span class="ico">🤷</span>Não sei se preciso</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field-label">Qual serviço te interessa mais agora? (pode marcar mais de um)</label>
+        <div class="pill-grid">
+          <label class="pill"><input type="checkbox" name="servicos" value="diagnostico"><span class="indicator"></span><span class="ico">🗣️</span>Reunião de Instrução e Diagnóstico</label>
+          <label class="pill"><input type="checkbox" name="servicos" value="viabilidade"><span class="indicator"></span><span class="ico">📋</span>Estudo de Viabilidade</label>
+          <label class="pill"><input type="checkbox" name="servicos" value="pesquisa"><span class="indicator"></span><span class="ico">🔍</span>Pesquisa de Mercado</label>
+          <label class="pill"><input type="checkbox" name="servicos" value="plan"><span class="indicator"></span><span class="ico">📊</span>Elaboração de Business Plan</label>
+          <label class="pill"><input type="checkbox" name="servicos" value="abertura"><span class="indicator"></span><span class="ico">🏢</span>Abertura de Empresa</label>
+          <label class="pill"><input type="checkbox" name="servicos" value="contabilidade"><span class="indicator"></span><span class="ico">📄</span>Contabilidade nos EUA</label>
+          <label class="pill"><input type="checkbox" name="servicos" value="visto"><span class="indicator"></span><span class="ico">🛂</span>Apoio no Processo de Visto</label>
+          <label class="pill"><input type="checkbox" name="servicos" value="consultoria"><span class="indicator"></span><span class="ico">💬</span>Consultoria Geral</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="outro-servico">Outro serviço de interesse?</label>
+        <input type="text" id="outro-servico" name="outro_servico" placeholder="Descreva livremente...">
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="comentarios-livres">Comentários livres / dúvidas específicas</label>
+        <textarea id="comentarios-livres" name="comentarios_livres" placeholder="Conte um pouco mais sobre seu projeto, dúvidas ou qualquer informação que julgue relevante..."></textarea>
+      </div>
+    </section>
+
+    <!-- 06 — PERFIL FINANCEIRO -->
+    <section class="section">
+      <div class="section-head"><span class="label">06 — Perfil Financeiro</span></div>
+
+      <div class="field">
+        <label class="field-label" for="faturamento">Faturamento mensal aproximado do seu negócio no Brasil</label>
+        <input type="text" id="faturamento" name="faturamento" placeholder="Ex: R$ 80.000 / mês">
+        <p class="hint">Informação confidencial, usada apenas para dimensionar a melhor solução para você.</p>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="capital">Capital estimado disponível para investir nos EUA</label>
+        <input type="text" id="capital" name="capital" placeholder="Ex: USD 150.000">
+        <p class="hint">Importante para indicar o tipo de visto de investidor mais adequado ao seu perfil.</p>
+      </div>
+    </section>
+
+    <!-- 07 — QUANDO GOSTARIA DE COMEÇAR -->
+    <section class="section">
+      <div class="section-head"><span class="label">07 — Quando Gostaria de Começar?</span></div>
+
+      <div class="field">
+        <div class="pill-grid">
+          <label class="pill"><input type="radio" name="timeline" value="imediato"><span class="indicator"></span><span class="ico">⚡</span>Quero começar imediatamente</label>
+          <label class="pill"><input type="radio" name="timeline" value="30dias"><span class="indicator"></span><span class="ico">🗓️</span>Quero começar em 30 dias</label>
+          <label class="pill"><input type="radio" name="timeline" value="90dias"><span class="indicator"></span><span class="ico">🚩</span>Quero começar em 90 dias</label>
+          <label class="pill"><input type="radio" name="timeline" value="120dias"><span class="indicator"></span><span class="ico">⏳</span>Quero começar em 120 dias</label>
+        </div>
+      </div>
+    </section>
+
+    <button type="submit" class="submit">Enviar Sondagem →</button>
+    <p class="confidential">🔒 Seus dados são tratados com total confidencialidade.</p>
+  </form>
+
+  <div class="success" id="success-panel">
+    <h2>Sondagem enviada com sucesso</h2>
+    <p>Recebemos suas informações. Nossa equipe vai analisar seu perfil e entrar em contato em breve.</p>
+  </div>
+
+</div>
+
+<script>
+  const form = document.getElementById('sondagem-form');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if(!form.checkValidity()){ form.reportValidity(); return; }
+    // TODO: substitua por envio real (fetch para sua API, Google Sheets, e-mail, CRM, etc.)
+    console.log('Dados da sondagem:', Object.fromEntries(new FormData(form).entries()));
+    form.classList.add('hide');
+    document.getElementById('success-panel').classList.add('show');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+
+</body>
+</html>
